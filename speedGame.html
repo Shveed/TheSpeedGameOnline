@@ -6,14 +6,19 @@
 		</title>
 		<meta http_equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="speedGameStyles.css" /> 
-		<script src="//speedGameScript.js"></script>
+		<script src="speedGameScript.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	</head>
 
 	<body>
 		<div>
-			<button class="buttonStart" onclick="startGame()">
+			<button class="buttonStart" id="startButton" onclick="startGame()">
 				Нажмите, чтобы начать игру...
 			</button>
+		</div>
+
+		<div class="hide" id="gameArea">
+			
 		</div>
 	</body>
 
