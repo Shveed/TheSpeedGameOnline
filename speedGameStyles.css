@@ -18,19 +18,9 @@
 .hide{
   display: none;
 }
-.playingArea{
-  display: inline-block;
-  width: 1120px;
-  height: 630px;
-  border: 2px solid;
-}
-.personObject{
-  display: block;
-  width: 40px;
-  height: 40px;
-  background-color: red;
-  border-radius: 50%;
-  border: 2px solid;
+.gameOver(){
+	display: block;
+	color: "red";
 }
 .backPicture{
   display: black;
@@ -39,4 +29,7 @@
 }
 .free{
   position: relative;
+}
+.showInfoBlock{
+	display: inline-block;
 }

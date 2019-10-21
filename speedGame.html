@@ -27,6 +27,8 @@
 	<div id="info" class="hide">
 		<p>
 			Score: <span id="score">0</span>
+			Difficulty: <span id="diff">1</span>
+			Lifes: <span id="lifes">5</span>
 		</p>
 	</div>
 
@@ -34,17 +36,27 @@
 		<canvas id="myCanvas" width="1120" height="630"></canvas>
 	</div>
 
+	<div class="hide" id="gameOver">
+		<span id="youLost"></span>
+	</div>
+
 	<script>
+		var buttonToHide = document.getElementById("startButton");
+		var canvasDiv = document.getElementById("canvasDiv");
+		var infoSpan = document.getElementById("info");
+		var canvas = document.getElementById("myCanvas");
+		var gameOverMessage = document.getElementById("gameOver");
 		var Score = 0;
 		var Missed = 0;
-		var canvas = document.getElementById("myCanvas");
 		var ctx = canvas.getContext("2d");
 		var x = canvas.width/2;
 		var y = canvas.height-30;
 		var dx = 2;
 		var dy = -2;
 		var startLevel = 20;
-		var ballRadius = 10;
+		var ballRadius = 20;
+		var difficulty = 1;
+		var lifes = 5;
 		checkClick();
 		setInterval(draw, startLevel);
 	</script>

@@ -1,10 +1,7 @@
 function startGame(){
-	var buttonToHide = document.getElementById("startButton");
-	var canvasDiv = document.getElementById("canvasDiv");
-	var infoSpan = document.getElementById("info");
 	buttonToHide.className = "hide";
 	canvasDiv.className = "";
-	infoSpan.className = "";
+	infoSpan.className = "showInfoBlock";
 
 }
 
@@ -41,11 +38,47 @@ function checkClick(){
 		if((clickX < x + ballRadius && clickX > x - ballRadius) &&
 			(clickY < y + ballRadius && clickY > y - ballRadius)){
 			Score++;
-			document.getElementById("info").innerHTML = Score;
+			document.getElementById("score").innerHTML = Score;
+			x = randomSpawnPos(ballRadius, 1120 - ballRadius);
+			y = randomSpawnPos(ballRadius, 630 - ballRadius);
+			changeDifficulty();
+			checkWin();
+		}
+		else{
+			lifes--;
+			document.getElementById("lifes").innerHTML = lifes;
+			if(lifes == 0){
+				hideCanvasBlock();
+				gameOverMessage.innerHTML = "YOU LOST!";				
+			}
 		}
 	}
-
 }
 
+function randomSpawnPos(min, max){
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function changeDifficulty(){
+	if(Score % 5 == 0 && Score != 0){
+ 		difficulty++;
+		document.getElementById("diff").innerHTML = difficulty;
+		startLevel -= 1;
+		ballRadius -= 1;
+	}
+}
+function checkWin(){
+	if(Score == 99){
+		hideCanvasBlock();
+		gameOverMessage.innerHTML = "YOU WON!";
+	}
+}
+function hideCanvasBlock(){
+	canvasDiv.className = "hide";
+	infoSpan.className = "hide";
+	gameOverMessage.className = "gameOver";
+}
 
 
