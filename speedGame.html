@@ -1,27 +1,53 @@
 <!DOCTYPE html> 
 <html>
-	<head>
-		<title>
-			Speed Game
-		</title>
-		<meta http_equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" href="speedGameStyles.css" /> 
-		<script src="speedGameScript.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	</head>
+<head>
+	<title>
+		Speed Game
+	</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="speedGameStyles.css" /> 
+	<script src="speedGameScript.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<style>
+    	* { padding: 0; margin: 0; }
+    	canvas { 
+    		background-image: url(https://i.ytimg.com/vi/cDCtGuu-l3s/maxresdefault_live.jpg);
+    		display: block;
+    	 	margin: 0 auto; 
+    	 }
+    </style>
+</head>
+<body>
+	<div>
+		<button class="buttonStart" id="startButton" onclick="startGame()">
+			Нажмите, чтобы начать игру...
+		</button>
+	</div>
 
-	<body>
-		<div>
-			<button class="buttonStart" id="startButton" onclick="startGame()">
-				Нажмите, чтобы начать игру...
-			</button>
-		</div>
+	<div id="info" class="hide">
+		<p>
+			Score: <span id="score">0</span>
+		</p>
+	</div>
 
-		<div class="hide free" id="gameArea" style="background-image: url(https://i.ytimg.com/vi/cDCtGuu-l3s/maxresdefault_live.jpg)">
-			<div class="personObject">
-				
-			</div>
-		</div>
-	</body>
+	<div class="hide" id="canvasDiv">
+		<canvas id="myCanvas" width="1120" height="630"></canvas>
+	</div>
+
+	<script>
+		var Score = 0;
+		var Missed = 0;
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+		var x = canvas.width/2;
+		var y = canvas.height-30;
+		var dx = 2;
+		var dy = -2;
+		var startLevel = 20;
+		var ballRadius = 10;
+		checkClick();
+		setInterval(draw, startLevel);
+	</script>
+</body>
 
 </html>
