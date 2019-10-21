@@ -20,7 +20,26 @@
 }
 .playingArea{
   display: inline-block;
-  width: 800px;
-  height: 600px;
+  width: 1120px;
+  height: 630px;
   border: 2px solid;
+}
+
+.personObject{
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.backPicture{
+  display: black;
+  width: 1120px;
+  height: 630px;
+}
+
+.free{
+  position: relative;
 }

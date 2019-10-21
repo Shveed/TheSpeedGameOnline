@@ -5,3 +5,7 @@ function startGame(){
 	gameArea.className = "playingArea";
 
 }
+
+function generateItem(max){
+	return Math.floor(Math.random() * max);
+}
