@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>
-		Speed Game
+		The Speed Game
 	</title>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="speedGameStyles.css" /> 
@@ -13,53 +13,75 @@
     	canvas { 
     		background-image: url(https://i.ytimg.com/vi/cDCtGuu-l3s/maxresdefault_live.jpg);
     		display: block;
-    	 	margin: 0 auto; 
+    	 	margin: 0 auto;
     	 }
     </style>
 </head>
 <body>
-	<div>
+	<style>
+		body{
+			background-color: green;
+		}
+	</style>
+	<div class="centerBlockButton">
 		<button class="buttonStart" id="startButton" onclick="startGame()">
 			Нажмите, чтобы начать игру...
 		</button>
+
+		<select id="selectDiff" class="dropcontainer trigger"> 
+			<option>Новичок</option>
+			<option>Любитель</option>
+			<option>Профи</option>
+		</select>
+	</div>
+
+	<div class="hide" id="canvasDiv">
+		<img src="https://avatars.mds.yandex.net/get-pdb/33827/3cd5c61f-7058-4283-b387-b352f2b7a65c/s1200"
+		id="pic1" class="hide">
+		<canvas id="myCanvas" width="1120" height="630"></canvas>
 	</div>
 
 	<div id="info" class="hide">
 		<p>
-			Score: <span id="score">0</span>
-			Difficulty: <span id="diff">1</span>
-			Lifes: <span id="lifes">5</span>
+			<h2> 
+				Score: <span id="score">0</span> 
+				Difficulty: <span id="diff">1</span> 
+				Lifes: <span id="lifes">5</span> 	
+			</h2>
 		</p>
-	</div>
 
-	<div class="hide" id="canvasDiv">
-		<canvas id="myCanvas" width="1120" height="630"></canvas>
-	</div>
-
-	<div class="hide" id="gameOver">
-		<span id="youLost"></span>
+		<div class="hide" id="gameOver">
+			<p>
+				<h1>
+					<span id="youLost" class="hide">YOU LOST!</span>
+					<span id="youWon" class="hide">YOU WON!</span>
+				</h1>
+			</p>
+		</div>
 	</div>
 
 	<script>
 		var buttonToHide = document.getElementById("startButton");
-		var canvasDiv = document.getElementById("canvasDiv");
-		var infoSpan = document.getElementById("info");
-		var canvas = document.getElementById("myCanvas");
-		var gameOverMessage = document.getElementById("gameOver");
-		var Score = 0;
-		var Missed = 0;
-		var ctx = canvas.getContext("2d");
-		var x = canvas.width/2;
-		var y = canvas.height-30;
-		var dx = 2;
-		var dy = -2;
-		var startLevel = 20;
-		var ballRadius = 20;
-		var difficulty = 1;
-		var lifes = 5;
+			selectDiff = document.getElementById("selectDiff");
+			canvasDiv = document.getElementById("canvasDiv");
+			infoSpan = document.getElementById("info");
+			canvas = document.getElementById("myCanvas");
+			img1 = document.getElementById("pic1");
+			lost = document.getElementById("youLost");
+			won = document.getElementById("youWon");
+			Score = 0;
+			ctx = canvas.getContext("2d");
+			x1 = 10;
+			y1 = 10;
+			dx1 = -2;
+			dy1 = 2;
+			startLevel = 20;
+			ballDiam = 40;
+			difficulty = 1;
+			lifes = 5;
+			finalScore = 99;
 		checkClick();
 		setInterval(draw, startLevel);
 	</script>
 </body>
-
 </html>

@@ -1,5 +1,5 @@
 .buttonStart{
-	display: inline-block;
+	display: block;
 	align-items: center;
 	justify-content: center;
   color: black;
@@ -15,21 +15,63 @@
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0), inset 0 1px 2px rgba(0,0,0,0), inset 0 0 0 60px rgba(255,255,0,0);
   transition: box-shadow .2s, border-color .2s;
 }
+.centerBlockButton{
+  display: block;
+  position: absolute;
+  top: 2%;
+  left: 42%;
+}
+.canvasClass{
+  display: block;
+  margin: auto;
+  border: 10px solid #FEFEFE; 
+  width: 1120px;
+  height: 630px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 .hide{
   display: none;
 }
-.gameOver(){
+.gameOver{
 	display: block;
 	color: "red";
+  text-align: center;
+}
+.gameWon{
+  display: block;
+  color: "blue";
+  text-align: center;
 }
 .backPicture{
   display: black;
   width: 1120px;
   height: 630px;
 }
-.free{
-  position: relative;
-}
 .showInfoBlock{
 	display: inline-block;
+  position: absolute;
+  left: 41%;
+}
+.dropcontainer {
+   position:relative;
+   font-size: 12px;
+   color: #777;
+  }
+
+.trigger {
+   color: #777;
+   left: 25%;
+   top: 10px;
+   padding: 10px;
+   width: 50%;
+   background: #fff;
+   display: block;
+   border: 1px solid #ccc;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   -webkit-transition: all 0.5s ease;
+   -moz-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease; 
+   transition: all 0.5s ease;
 }

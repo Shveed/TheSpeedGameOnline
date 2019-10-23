@@ -1,8 +1,22 @@
 function startGame(){
+	var value = selectDiff.value;
+	switch (value) {
+		case "Новичок":
+			finalScore = 20;
+			break;
+		case "Любитель":
+			finalScore = 50;
+			break;
+		case "Профи":
+			finalScore = 90;
+			break;
+		default:
+			break;
+	}
 	buttonToHide.className = "hide";
-	canvasDiv.className = "";
+	selectDiff.className = "hide";
+	canvasDiv.className = "canvasClass";
 	infoSpan.className = "showInfoBlock";
-
 }
 
 function generateItem(max){
@@ -11,9 +25,7 @@ function generateItem(max){
 
 function drawBall(){
 	ctx.beginPath();
-	ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-	ctx.fillStyle = "#FFF";
-	ctx.fill();
+	ctx.drawImage(img1, x1, y1, ballDiam, ballDiam);
 	ctx.closePath();
 }
 
@@ -21,26 +33,26 @@ function draw(){
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	drawBall();
 	checkCollision();
-	x += dx;
-	y += dy;
+	x1 += dx1;
+	y1 += dy1;
 }
 
 function checkCollision(){
-	if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) { dx = -dx; }
-	if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) { dy = -dy; }
+	if(x1 + dx1 > canvas.width-ballDiam || x1 + dx1 < 0) { dx1 = -dx1; }
+	if(y1 + dy1 > canvas.height-ballDiam || y1 + dy1 < 0) { dy1 = -dy1; }
 }
 
 function checkClick(){
 	document.querySelector('#canvasDiv').onmousedown = function(event){
 		event = event || window.event;
 		var clickX = event.offsetX;
-		var clickY = event.offsetY;
-		if((clickX < x + ballRadius && clickX > x - ballRadius) &&
-			(clickY < y + ballRadius && clickY > y - ballRadius)){
+			clickY = event.offsetY;
+		if((clickX < x1 + ballDiam && clickX > x1 - ballDiam) &&
+			(clickY < y1 + ballDiam && clickY > y1 - ballDiam)){
 			Score++;
 			document.getElementById("score").innerHTML = Score;
-			x = randomSpawnPos(ballRadius, 1120 - ballRadius);
-			y = randomSpawnPos(ballRadius, 630 - ballRadius);
+			x1 = randomSpawnPos(ballDiam, 1120 - ballDiam);
+			y1 = randomSpawnPos(ballDiam, 630 - ballDiam);
 			changeDifficulty();
 			checkWin();
 		}
@@ -48,8 +60,9 @@ function checkClick(){
 			lifes--;
 			document.getElementById("lifes").innerHTML = lifes;
 			if(lifes == 0){
-				hideCanvasBlock();
-				gameOverMessage.innerHTML = "YOU LOST!";				
+				$(this).hide(1000);
+				document.getElementById("gameOver").className = "gameOver";
+				lost.className = "gameOver";				
 			}
 		}
 	}
@@ -66,19 +79,13 @@ function changeDifficulty(){
  		difficulty++;
 		document.getElementById("diff").innerHTML = difficulty;
 		startLevel -= 1;
-		ballRadius -= 1;
+		ballDiam -= 2;
 	}
 }
 function checkWin(){
-	if(Score == 99){
-		hideCanvasBlock();
-		gameOverMessage.innerHTML = "YOU WON!";
+	if(Score == finalScore){
+		$("#canvasDiv").hide(1000);
+		document.getElementById("gameOver").className = "gameOver";
+		won.className = "gameWon";
 	}
 }
-function hideCanvasBlock(){
-	canvasDiv.className = "hide";
-	infoSpan.className = "hide";
-	gameOverMessage.className = "gameOver";
-}
-
-
