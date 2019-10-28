@@ -57,7 +57,6 @@
    font-size: 12px;
    color: #777;
   }
-
 .trigger {
    color: #777;
    left: 25%;
@@ -75,3 +74,23 @@
    -o-transition: all 0.5s ease; 
    transition: all 0.5s ease;
 }
+.skinChangeBlock{
+  display: block;
+  position: absolute;
+  left: 16%;
+  top: 95px;
+}
+.roundSkin {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 3px 3px 2px 1px black;
+    margin-left: 9px;
+  }
+  .roundSkinChoosen{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 3px 3px 2px 1px white;
+    margin-left: 9px;
+  }

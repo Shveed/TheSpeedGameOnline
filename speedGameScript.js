@@ -13,8 +13,7 @@ function startGame(){
 		default:
 			break;
 	}
-	buttonToHide.className = "hide";
-	selectDiff.className = "hide";
+	startMenu.className = "hide";
 	canvasDiv.className = "canvasClass";
 	infoSpan.className = "showInfoBlock";
 }
@@ -82,10 +81,15 @@ function changeDifficulty(){
 		ballDiam -= 2;
 	}
 }
+
 function checkWin(){
 	if(Score == finalScore){
 		$("#canvasDiv").hide(1000);
 		document.getElementById("gameOver").className = "gameOver";
 		won.className = "gameWon";
 	}
+}
+
+function changeSkin(imgSrc){
+	img1.src = imgSrc;
 }

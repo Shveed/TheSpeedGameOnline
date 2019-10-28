@@ -23,7 +23,7 @@
 			background-color: green;
 		}
 	</style>
-	<div class="centerBlockButton">
+	<div id="startMenu" class="centerBlockButton">
 		<button class="buttonStart" id="startButton" onclick="startGame()">
 			Нажмите, чтобы начать игру...
 		</button>
@@ -33,11 +33,22 @@
 			<option>Любитель</option>
 			<option>Профи</option>
 		</select>
+
+		<div id="chooseBallSkin" class="skinChangeBlock">
+			<img id="skin1" class="roundSkin" src="https://cdn.pixabay.com/photo/2013/07/12/18/04/smiley-152913_640.png" 
+			onclick="changeSkin(this.src)">
+			<img id="skin2" class="roundSkin" src="https://avatars.mds.yandex.net/get-pdb/406349/56541856-b6d3-4fb0-b210-b0c4aa4e9869/s1200?webp=false"
+			onclick="changeSkin(this.src)">
+			<img id="skin3" class="roundSkin" src="https://avatars.mds.yandex.net/get-pdb/931085/b188f27f-a983-404c-ba19-1f8cde46565e/s1200"
+			onclick="changeSkin(this.src)">
+			<img id="skin4" class="roundSkin" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Emojione_BW_1F604.svg/512px-Emojione_BW_1F604.svg.png"
+			onclick="changeSkin(this.src)">
+		</div>
 	</div>
 
 	<div class="hide" id="canvasDiv">
 		<img src="https://avatars.mds.yandex.net/get-pdb/33827/3cd5c61f-7058-4283-b387-b352f2b7a65c/s1200"
-		id="pic1" class="hide">
+		id="pic1" class="roundSkin hide">
 		<canvas id="myCanvas" width="1120" height="630"></canvas>
 	</div>
 
@@ -54,7 +65,7 @@
 			<p>
 				<h1>
 					<span id="youLost" class="hide">YOU LOST!</span>
-					<span id="youWon" class="hide">YOU WON!</span>
+					<span id="youWon" class="hide">WINNER WINNER CHICKEN DINNER!</span>
 				</h1>
 			</p>
 		</div>
@@ -69,6 +80,8 @@
 			img1 = document.getElementById("pic1");
 			lost = document.getElementById("youLost");
 			won = document.getElementById("youWon");
+			startMenu = document.getElementById("startMenu");
+			currentSkinId = "noid";
 			Score = 0;
 			ctx = canvas.getContext("2d");
 			x1 = 10;
